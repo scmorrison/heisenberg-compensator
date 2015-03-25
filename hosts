@@ -1,0 +1,2 @@
+[federation]
+localhost ansible_connection=local

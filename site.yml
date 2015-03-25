@@ -1,0 +1,9 @@
+- name: Configuring standard operating parameters
+  hosts:
+    - federation
+  gather_facts: yes
+  sudo: true
+  roles:
+    - { role: base, tags: [ 'config', 'base' ] }
+    #- { role: pentest tags: [ 'pentest', 'security' ] }
+  
