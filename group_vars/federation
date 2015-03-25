@@ -1,4 +1,7 @@
 ---
+crew:
+  - sam
+
 standard_apps:
   - mutt
   - vim-nox

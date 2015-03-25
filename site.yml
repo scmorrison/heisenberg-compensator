@@ -4,6 +4,7 @@
   gather_facts: yes
   sudo: true
   roles:
-    - { role: base, tags: [ 'config', 'base' ] }
-    #- { role: pentest tags: [ 'pentest', 'security' ] }
+    - { role: base, tags: [ 'base' ] }
+    - { role: multimedia, tags: [ 'multimedia' ] }
+    - { role: firefox, tags: [ 'firefox' ] }
   

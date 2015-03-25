@@ -1,0 +1,35 @@
+---
+- name: Get latest Firefox version number
+  shell: wget -qO- http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/latest/linux-x86_64/en-US/ | sed -nr 's|.*>firefox-(.*)\.tar\.bz2</a>.*|\1|p'
+  register: version
+
+- name: Download latest Firefox
+  get_url: url="http://ftp.mozilla.org/pub/firefox/releases/latest/linux-x86_64/en-US/firefox-{{ version.stdout }}.tar.bz2"  dest=/tmp/firefox-latest.tar.bz2
+
+- name: Extract firefox-latest.tar.bz2
+  unarchive: src=/tmp/firefox-latest.tar.bz2 dest=/tmp/
+
+- name: Remove any existing /opt/firefox
+  file: path=/opt/firefox state=absent
+
+- name: Move firefox to /opt/firefox
+  copy: src=/tmp/firefox dest=/opt/
+
+- name: Make /opt/firefox/firefox executable
+  file: path=/opt/firefox/firefox mode=0755
+
+- name: Cleanup firefox tmp files
+  file: path="{{ item }}" state=absent
+  with_items:
+    - /tmp/firefox
+    - /tmp/firefox-latest.tar.bz2
+
+- name: Add alternatives link for /opt/firefox/firefox 
+  alternatives: name=x-www-browser link=/usr/bin/x-www-browser path=/opt/firefox/firefox
+
+- name: Set firefox as default browser 
+  command: update-alternatives --set x-www-browser /opt/firefox/firefox
+
+- name: Symlink /opt/firefox/firefox to ~/bin/firefox
+  file: src=/opt/firefox/firefox dest="/home/{{ item }}/bin/firefox" state=link
+  with_items: crew
