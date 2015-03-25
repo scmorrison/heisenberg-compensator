@@ -1,0 +1,4 @@
+---
+- name: Install multimedia apps
+  apt: name="{{ item }}" state=latest update_cache=true
+  with_items: multimedia_apps

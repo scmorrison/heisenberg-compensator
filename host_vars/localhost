@@ -2,3 +2,6 @@
 standard_apps:
   - mutt
   - vim-nox
+
+multimedia_apps:
+  - pianobar
