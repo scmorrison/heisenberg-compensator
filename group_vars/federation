@@ -5,6 +5,9 @@ crew:
 standard_apps:
   - mutt
   - vim-nox
+  - gtk-redshift
+  - roxterm
+  - tmux
 
 multimedia_apps:
   - pianobar
