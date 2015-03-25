@@ -5,6 +5,6 @@
   sudo: true
   roles:
     - { role: base, tags: [ 'base' ] }
-    - { role: multimedia, tags: [ 'multimedia' ] }
-    - { role: firefox, tags: [ 'firefox' ] }
+    #- { role: multimedia, tags: [ 'multimedia' ] }
+    #- { role: firefox, tags: [ 'firefox' ] }
   
