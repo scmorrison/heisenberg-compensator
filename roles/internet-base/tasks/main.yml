@@ -1,0 +1,4 @@
+---
+  - name: Install base Internet apps
+    apt: name="{{ item }}" state=latest update_cache=true
+    with_items: internet_base_apps

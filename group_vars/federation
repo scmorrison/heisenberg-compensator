@@ -3,6 +3,8 @@ crew:
   - sam
 
 standard_apps:
+  - gnupg
+  - gnupg-agent
   - mutt
   - vim-nox
   - gtk-redshift
@@ -11,3 +13,14 @@ standard_apps:
 
 multimedia_apps:
   - pianobar
+
+internet_base_apps:
+  - pidgin
+  - pidgin-otr
+  - weechat
+  - polipo
+
+mail_apps:
+  - mutt
+  - offlineimap
+  - msmtp  
