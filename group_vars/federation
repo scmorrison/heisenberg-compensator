@@ -24,3 +24,6 @@ mail_apps:
   - mutt
   - offlineimap
   - msmtp  
+
+development_apps_pip:
+  - grip

@@ -1,0 +1,4 @@
+---
+- name: Install development apps (pip)
+  pip: name="{{ item }}" state=latest 
+  with_items: development_apps_pip

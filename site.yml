@@ -7,6 +7,7 @@
     - { role: base, tags: [ 'base' ] }
     - { role: internet-base, tags: [ 'internet-base', 'internet' ] }
     - { role: mail, tags: [ 'mail' ] }
+    - { role: development, tags: [ 'development' ] }
     - { role: multimedia, tags: [ 'multimedia' ] }
     - { role: firefox, tags: [ 'firefox', 'internet' ] }
     - { role: google, tags: [ 'google', 'internet' ] }
