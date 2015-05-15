@@ -2,7 +2,11 @@
 crew:
   - sam
 
+release: unstable
+
 standard_apps:
+  - wdm
+  - i3
   - gnupg
   - gnupg-agent
   - mutt
