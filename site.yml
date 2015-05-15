@@ -6,6 +6,7 @@
   roles:
     - { role: base, tags: [ 'base' ] }
     - { role: internet-base, tags: [ 'internet-base', 'internet' ] }
+    - { role: japanese, tags: [ 'japanese' ] }
     - { role: mail, tags: [ 'mail' ] }
     - { role: development, tags: [ 'development' ] }
     - { role: multimedia, tags: [ 'multimedia' ] }

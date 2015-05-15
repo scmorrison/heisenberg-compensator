@@ -1,0 +1,7 @@
+---
+
+- name: Ensure xinitrc.i3 exists
+  file: path=/etc/X11/xinit/xinitrc.i3 state=touch
+
+- name: Set Japanese keyboard layout for i3
+  lineinfile: dest=/etc/X11/xinit/xinitrc.i3 regexp=^setxkbmap line="setxkbmap -layout jp"
