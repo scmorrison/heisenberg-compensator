@@ -6,9 +6,8 @@
   apt: upgrade=dist
   when: distupgrade is defined
 
-- name: Install standard apps
-  apt: name="{{ item }}" state=latest update_cache=true
-  with_items: standard_apps
+- name: Update apt cache (we only want to do this once)
+  apt: update_cache=yes
 
 - name: Ensure local directories exist
   file: path="/home/{{item[0]}}/{{item[1]}}" state=directory owner="{{item[0]}}" group="{{item[0]}}"

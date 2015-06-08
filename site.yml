@@ -5,6 +5,8 @@
   sudo: true
   roles:
     - { role: base, tags: [ 'base' ] }
+    - { role: standard, tags: [ 'standard' ] }
+    - { role: audio, tags: [ 'audio' ] }
     - { role: internet-base, tags: [ 'internet-base', 'internet' ] }
     - { role: japanese, tags: [ 'japanese' ] }
     - { role: mail, tags: [ 'mail' ] }

@@ -1,0 +1,6 @@
+---
+
+- name: Install standard apps
+  apt: name="{{ item }}" state=latest
+  with_items: standard_apps
+

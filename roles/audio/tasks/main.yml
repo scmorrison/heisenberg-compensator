@@ -1,0 +1,21 @@
+---
+
+- name: Install pulseaudio-equalizer dependencies
+  apt: name="{{ item }}" 
+  with_items:
+    - swh-plugins
+    - ladspa-sdk
+
+- name: Download pulseadio-equalizer
+  get_url: url="http://ppa.launchpad.net/alex-wv/pulseaudio-equalizer-ppa/ubuntu/pool/main/p/pulseaudio-equalizer/pulseaudio-equalizer_2.7.0.2-5~patched~vivid_all.deb"  dest=/tmp/pulseaudio-equalizer_2.7.0.2-5~patched~vivid_all.deb
+
+- name: Is pulseaudio-equalizer installed?C
+  command: dpkg-query -W pulseaudio-equalizer
+  register: pe_check
+  failed_when: pe_check.rc > 1
+  changed_when: pe_check.rc == 1
+
+- name: Install pulseadio-equalizer
+  apt: deb="/tmp/pulseaudio-equalizer_2.7.0.2-5~patched~vivid_all.deb"
+  sudo: true
+  when: pe_check.rc == 1
