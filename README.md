@@ -72,6 +72,7 @@ $ ./scripts/audio.sh
        presynchook: ~/bin/filter_mail
    ```
 3. Encrypt vars/secrets.yml with ansible-vault
+   
    ```bash
    ansible-vault encrypt vars/secrets.yml --vault-password-file=scripts/vaultpass
    ```
