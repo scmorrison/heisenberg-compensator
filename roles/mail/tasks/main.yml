@@ -27,6 +27,10 @@
     copy: src="home.spamassassin.user_prefs" dest="/home/{{ item }}/.spamassassin/user_prefs" owner="{{ item }}" group="{{ item }}"
     with_items: crew
 
+  - name: Copy offlineimap password script
+    copy: src=offlineimap.py dest="/home/{{ item }}/bin/offlineimap.py" mode=0755
+    with_items: crew
+
   - name: Setup ~/.offlineimap
     template: src="home.offlineimaprc.j2" dest="/home/{{ item }}/.offlineimaprc"
     with_items: crew
