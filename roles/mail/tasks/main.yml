@@ -28,7 +28,7 @@
     with_items: crew
 
   - name: Copy offlineimap password script
-    copy: src=offlineimap.py dest="/home/{{ item }}/bin/offlineimap.py" mode=0755
+    copy: src=home.bin.offlineimap.py dest="/home/{{ item }}/bin/offlineimap.py" mode=0755
     with_items: crew
 
   - name: Setup ~/.offlineimap
