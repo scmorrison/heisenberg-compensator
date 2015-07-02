@@ -19,6 +19,8 @@ multimedia_apps:
   - pianobar
 
 internet_base_apps:
+  - iceweasel
+  - iceweasel-l10n-ja
   - pidgin
   - pidgin-otr
   - weechat
@@ -28,6 +30,11 @@ mail_apps:
   - mutt
   - offlineimap
   - msmtp  
+  - spamassassin
+  - pyzor
+
+mail_apps_pip:
+  - isbg
 
 development_apps_pip:
   - grip

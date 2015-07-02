@@ -3,6 +3,8 @@
     - federation
   gather_facts: yes
   sudo: true
+  vars_files:
+    - vars/secrets.yml
   roles:
     - { role: base, tags: [ 'base' ] }
     - { role: standard, tags: [ 'standard' ] }

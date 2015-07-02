@@ -1,4 +1,33 @@
 ---
-  - name: Install mail apps
+  - name: Install mail apps (apt)
     apt: name="{{ item }}" state=latest update_cache=true
     with_items: mail_apps
+
+  - name: Install mail apps (pip)
+    pip: name="{{ item }}" state=latest 
+    with_items: mail_apps_pip
+
+  - name: Configure spamassassin
+    copy: src=etc.spamassassin dest=/etc/default/spamassassin owner=root group=root 
+
+  - name: Enable spamassassin on boot
+    service: name=spamassassin.service enabled=yes
+
+  - name: Restart spamassassin
+    service: name=spamassassin.service state=restarted
+
+  - name: Download pyzor db for spamassassin
+    command: pyzor --homedir /etc/mail/spamassassin discover
+
+  - name: Ensure user .spamassassin directories exist
+    file: path="/home/{{ item }}/.spamassassin" state=directory owner="{{ item }}" group="{{ item }}"
+    with_items: crew
+
+  - name: Configure user spamassassin user_prefs
+    copy: src="home.spamassassin.user_prefs" dest="/home/{{ item }}/.spamassassin/user_prefs" owner="{{ item }}" group="{{ item }}"
+    with_items: crew
+
+  - name: Setup ~/.offlineimap
+    template: src="home.offlineimaprc.j2" dest="/home/{{ item }}/.offlineimaprc"
+    with_items: crew
+    tags: oitemplate

@@ -1,0 +1,67 @@
+[general]
+ui = ttyui
+accounts = scoreymjp-gmail, sam-cnstechgroup, scmorrison-openmailbox
+pythonfile=~/bin/offlineimap.py
+fsync = False
+maxsyncaccounts = 3
+
+{% for account in mail_accounts %}
+[Account {{ account.folder }}]
+localrepository = {{ account.folder }}-local
+remoterepository = {{ account.folder }}-remote
+status_backend = sqlite
+autorefresh = 5
+{% if account.presynchook is defined %}
+presynchook = {{ account.presynchook }}
+{% endif %}
+
+[Repository {{ account.folder }}-local]
+type = Maildir
+localfolders = ~/.mail/{{ account.folder }}
+
+{% if account.local_folders is defined %}
+nametrans = lambda folder: {
+{% for folder in account.local_folders %}
+  {{ folder.entry }}{% if not loop.last %},
+{% endif %}
+{% endfor %}
+}.get(folder, folder)
+
+{% endif %}
+
+[Repository {{ account.folder }}-remote]
+maxconnections = 1
+type = {{ account.type }}
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+{% if account.type == 'IMAP' %}
+remotehost = {{ account.remotehost }}
+remoteport = {{ account.remoteport }}
+ssl = yes
+{% endif %}
+remoteuser = {{ account.address }}
+remotepasseval = mailpasswd("{{ account.address }}")
+realdelete = no
+{% if account.spamfolder is defined %}
+spamfolder = {{ account.spamfolder }}
+{% endif %}
+{% if account.remote_folders is defined %}
+nametrans = lambda folder: {
+{% for folder in account.remote_folders %}
+  {{ folder.entry }}{% if not loop.last %},
+{% endif %}
+{% endfor %}
+}.get(folder, folder)
+
+{% endif %}
+
+{% if account.filter_folders is defined %}
+folderfilter = lambda folder: folder not in [
+{% for folder in account.filter_folders %}
+  {{ folder.entry }}{% if not loop.last %},
+{% endif %}
+{% endfor %}
+]
+
+{% endif %}
+
+{% endfor %}

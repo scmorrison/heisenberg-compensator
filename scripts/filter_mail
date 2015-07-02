@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# make SA learn your spam folder via isbg,also save the password
+# isbg.py --imaphost imap.openmailbox.org --ssl --imapuser username@nongmail.com --spaminbox Jumk --spamc --teachonly --learnspambox Spam --savepw
+
+isbg.py --imaphost imap.openmailbox.org --ssl --imapuser username@nongmail.com --spaminbox Junk --delete --expunge --noninteractive --spamc
+# imapfilter
