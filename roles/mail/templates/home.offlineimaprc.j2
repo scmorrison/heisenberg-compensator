@@ -1,6 +1,6 @@
 [general]
 ui = ttyui
-accounts = {{ mail_accounts|map(attribute='address')|join(', ') }}
+accounts = {{ mail_accounts|map(attribute='folder')|join(', ') }}
 pythonfile=~/bin/offlineimap.py
 fsync = False
 maxsyncaccounts = 3
