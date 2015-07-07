@@ -1,6 +1,7 @@
+---
+
 - name: Configuring standard operating parameters
-  hosts:
-    - federation
+  hosts: localhost
   gather_facts: yes
   sudo: true
   vars_files:
