@@ -31,6 +31,14 @@
     copy: src=home.bin.offlineimap.py dest="/home/{{ item }}/bin/offlineimap.py" mode=0755
     with_items: crew
 
+  - name: Setup offlineimap isbg.py presynchooks
+    template: src="home.bin.filter_mail.j2" dest="/home/{{ item.0 }}/bin/filter_mail_presynchook_{{ item.1.address }}"
+    with_nested:
+      - crew
+      - mail_accounts
+    when: item.1.presynchook is defined
+    tags: mailfilter
+
   - name: Setup ~/.offlineimap
     template: src="home.offlineimaprc.j2" dest="/home/{{ item }}/.offlineimaprc"
     with_items: crew

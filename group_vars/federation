@@ -38,3 +38,7 @@ mail_apps_pip:
 
 development_apps_pip:
   - grip
+
+audio_apps:
+  - ardour:
+      version: 4.1

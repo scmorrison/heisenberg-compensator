@@ -19,3 +19,8 @@
   apt: deb="/tmp/pulseaudio-equalizer_2.7.0.2-5~patched~vivid_all.deb"
   sudo: true
   when: pe_check.rc == 1
+
+- name: Template home.bin.build-ardour.j2
+  template: src="home.bin.build-ardour.j2" dest="/home/{{ item }}/bin/build-ardour" group="{{ item }}" owner=" {{ item }}" mode=0755
+  with_items: crew
+  tags: ardour

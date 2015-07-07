@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#
+# Build ardour
+#
+# VERSION = 4.1 (e.g. 4.1)
+
+ARDOURDIR=~/local/ardour
+VERSION={{ audio_apps.ardour.version }}
+
+cd $ARDOURDIR
+git checkout $VERSION
+./waf clean
+./waf configure --with-backend=alsa
+./waf
+rm ~/bin/ardour
+ln -s $ARDOURDIR/gtk2_ardour/ardev ~/bin/ardour

@@ -1,6 +1,6 @@
 [general]
 ui = ttyui
-accounts = scoreymjp-gmail, sam-cnstechgroup, scmorrison-openmailbox
+accounts = {{ mail_accounts|map(attribute='address')|join(', ') }}
 pythonfile=~/bin/offlineimap.py
 fsync = False
 maxsyncaccounts = 3
