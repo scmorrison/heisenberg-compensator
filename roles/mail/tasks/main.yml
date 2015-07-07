@@ -32,7 +32,7 @@
     with_items: crew
 
   - name: Setup offlineimap isbg.py presynchooks
-    template: src="home.bin.filter_mail.j2" dest="/home/{{ item.0 }}/bin/filter_mail_presynchook_{{ item.1.address }}"
+    template: src="home.bin.filter_mail.j2" dest="/home/{{ item.0 }}/bin/filter_mail_presynchook_{{ item.1.address }}" owner="{{ item.0 }}" group="{{ item.0 }}" mode=0755
     with_nested:
       - crew
       - mail_accounts
