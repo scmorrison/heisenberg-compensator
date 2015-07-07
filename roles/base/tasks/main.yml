@@ -13,5 +13,10 @@
   file: path="/home/{{item[0]}}/{{item[1]}}" state=directory owner="{{item[0]}}" group="{{item[0]}}"
   with_nested:
     - crew
-    - [ 'bin', 'local', 'src' ]
+    - [ 'local', 'src' ]
 
+- name: Ensure local directories exist
+  file: path="/home/{{item[0]}}/{{item[1]}}" src="/home/{{item[0]}}/MEGA/bin" state=link owner="{{item[0]}}" group="{{item[0]}}"
+  with_nested:
+    - crew
+    - [ 'bin' ]

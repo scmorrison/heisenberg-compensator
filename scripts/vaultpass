@@ -1,3 +1,4 @@
 #!/bin/bash
 
-/usr/bin/gpg --decrypt < ~/.heisenbergpw.gpg
+#/usr/bin/gpg --decrypt < ~/.heisenbergpw.gpg
+/usr/bin/pass General/heisenberg
