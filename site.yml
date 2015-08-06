@@ -17,4 +17,5 @@
     - { role: multimedia, tags: [ 'multimedia' ] }
     - { role: firefox, tags: [ 'firefox', 'internet' ] }
     - { role: google, tags: [ 'google', 'internet' ] }
+    - { role: libreoffice, tags: [ 'libreoffice' ] }
   

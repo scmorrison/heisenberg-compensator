@@ -6,6 +6,9 @@
   apt: upgrade=dist
   when: distupgrade is defined
 
+- name: Add owncloud key
+  apt_key: url=http://download.opensuse.org/repositories/isv:ownCloud:community/Debian_8.0/Release.key state=present
+
 - name: Update apt cache (we only want to do this once)
   apt: update_cache=yes
 

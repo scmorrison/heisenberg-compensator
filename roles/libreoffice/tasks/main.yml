@@ -1,0 +1,16 @@
+---
+- name: Get latest LibreOffice
+  shell: wget -qO- 'https://download.documentfoundation.org/libreoffice/stable/' --no-check-certificate | grep '<tr><td valign="top">&nbsp;</td><td><a href="' | tail -n 1 | sed 's/.*\([0-9]\.[0-9]\.[0-9]\).*/\1/'
+  register: version
+
+- name: Download latest LibreOffice
+  get_url: url="http://ftp.jaist.ac.jp/pub/tdf/libreoffice/stable/{{ version.stdout }}/deb/x86_64/LibreOffice_{{ version.stdout }}_Linux_x86-64_deb.tar.gz" dest=/tmp/libreoffice-latest.deb.tar.gz
+
+- name: Extract libreoffice-latest.deb.tar.gz
+  unarchive: src=/tmp/libreoffice-latest.deb.tar.gz dest=/tmp/
+
+- name: Install latest LibreOffice from deb packages
+  shell: /usr/bin/dpkg -i /tmp/LibreOffice_*_Linux_x86-64_deb/DEBS/*.deb
+
+- name: Cleanup LibreOffice tmp files
+  shell: rm -rf /tmp/LibreOffice_* /tmp/libreoffice-latest.deb.tar.gz
