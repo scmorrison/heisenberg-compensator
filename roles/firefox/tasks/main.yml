@@ -1,13 +1,6 @@
 ---
-- name: Get latest Firefox version
-  shell: wget -qO- "http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/latest{{ '' if release == 'latest' else '-beta' }}/linux-{{ arch }}/en-US/" | sed -nr 's|.*>firefox-(.*)\.tar\.bz2</a>.*|\1|p'|tail -n 1
-  register: version
-
-- name: Installing Firefox version
-  debug: var=version.stdout
-
 - name: Download latest Firefox beta
-  get_url: url="http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/latest{{ '' if release == 'latest' else '-beta' }}/linux-{{ arch }}/en-US/firefox-{{ version.stdout }}.tar.bz2"  dest=/tmp/firefox-latest.tar.bz2
+  get_url: url="https://download.mozilla.org/?product=firefox{{ '' if release == 'latest' else '-beta' }}-latest&os=linux{{ arch }}&lang=en-US"  dest=/tmp/firefox-latest.tar.bz2
 
 - name: Extract firefox-latest.tar.bz2
   unarchive: src=/tmp/firefox-latest.tar.bz2 dest=/tmp/
