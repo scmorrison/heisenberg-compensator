@@ -23,3 +23,15 @@
   with_nested:
     - crew
     - [ 'bin' ]
+
+- name: Copy etc.btkbd.conf
+  copy: dest="/etc/btkbd.conf" src=etc.btkbd.conf
+  tags: 'btkbd'
+
+- name: Copy etc.udev.rules.d.10-local.rules
+  copy: dest="/etc/udev/rules.d/10-local.rules" src=etc.udev.rules.d.10-local.rules
+  tags: 'btkbd'
+
+- name: Copy etc.systemd.system.btkbd.service
+  copy: dest="/etc/systemd/system/btkbd.service" src=etc.systemd.system.btkbd.service
+  tags: 'btkbd'
