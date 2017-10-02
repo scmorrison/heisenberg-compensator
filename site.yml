@@ -18,4 +18,4 @@
     - { role: firefox, tags: [ 'firefox', 'internet' ] }
     - { role: google, tags: [ 'google', 'internet' ] }
     - { role: libreoffice, tags: [ 'libreoffice' ] }
-  
+    - { role: cns.codedeploy-agent, tags: [ 'codedeploy' ] }

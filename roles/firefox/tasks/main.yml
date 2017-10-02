@@ -1,9 +1,9 @@
 ---
 - name: Download latest Firefox beta
-  get_url: url="https://download.mozilla.org/?product=firefox{{ '' if release == 'latest' else '-beta' }}-latest&os=linux{{ arch }}&lang=en-US"  dest=/tmp/firefox-latest.tar.bz2
+  get_url: url="https://download.mozilla.org/?product=firefox-{{ release  }}-latest-ssl&os=linux64&lang=en-US"  dest="/tmp/firefox-{{ release }}-latest.tar.bz2"
 
-- name: Extract firefox-latest.tar.bz2
-  unarchive: src=/tmp/firefox-latest.tar.bz2 dest=/tmp/
+- name: Extract firefox tar.bz2
+  unarchive: src="/tmp/firefox-{{ release }}-latest.tar.bz2" dest=/tmp/
 
 - name: Remove any existing /opt/firefox
   file: path=/opt/firefox state=absent
